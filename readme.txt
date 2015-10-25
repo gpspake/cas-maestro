@@ -75,6 +75,9 @@ By default, the capability is `edit_posts`.
 
 == Changelog ==
 
+= 1.1.4 =
+* Added option for certificate validation
+
 = 1.1.3 =
 * Users with 'edit_posts' capability can now edit only the authorized users (this can be changed using a filter - see FAQ)
 
