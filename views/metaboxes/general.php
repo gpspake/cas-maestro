@@ -33,7 +33,7 @@
         </table>
         <h2><?php _e('Certificate validation','CAS_Maestro'); ?></h2>
         <fieldset class="options">
-            <p><?php _e("Path to certificat for validation of the legitimacy of the cas server. Recommended for production use.", 'CAS_Maestro'); ?></p>
+            <p><?php _e("Path to certificate for validation of the legitimacy of the cas server. Recommended for production use.", 'CAS_Maestro'); ?></p>
             <p class="grey_text"><?php _e("No certificate validation will be used if path is left blank", 'CAS_Maestro'); ?></p>
             <p class="grey_text"><?php _e("", 'CAS_Maestro'); ?></p>
             <table width="700px" cellspacing="2" cellpadding="5" class="editform">
