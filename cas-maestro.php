@@ -69,6 +69,7 @@ class CAS_Maestro {
 			    'server_hostname' => 'yourschool.edu',
 			    'server_port' => '443',
 			    'server_path' => '',
+				'cert_path' => '',
 			    'e-mail_registration' => 1,
 			    'global_sender'=>get_bloginfo('admin_email'),
 			    'full_name' => '',
@@ -140,10 +141,11 @@ class CAS_Maestro {
 				// function added in phpCAS v. 0.6.0
 				// checking for static method existance is frustrating in php4
 				$phpCas = new phpCas();
-				if (method_exists($phpCas, 'setNoCasServerValidation'))
+				if (method_exists($phpCas, 'setCasServerCACert') && $this->settings['cert_path'])
+					phpCAS::setCasServerCACert($this->settings['cert_path']);
+				elseif (method_exists($phpCas, 'setNoCasServerValidation'))
 					phpCAS::setNoCasServerValidation();
 				unset($phpCas);
-				// if you want to set a cert, replace the above few lines	
 
 				if(defined('CAS_MAESTRO_DEBUG_ON') && CAS_MAESTRO_DEBUG_ON == true)
 					phpCAS::setDebug(CAS_MAESTRO_PLUGIN_PATH . 'debug.log');
@@ -584,6 +586,7 @@ class CAS_Maestro {
 				'server_hostname' => $_POST['server_hostname'],
 				'server_port' => $_POST['server_port'],
 				'server_path' => $_POST['server_path'],
+				'cert_path'   => $_POST['cert_path'],
 				//LDAP Settings
 		    	'ldap_protocol'=>$_POST['ldap_protocol'],
 		    	'ldap_server'=>$_POST['ldap_server'],
